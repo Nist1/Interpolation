@@ -41,7 +41,7 @@ void LagrangeInterpolation(vector<double> x, vector<double> y, double point)
 }
 
 
-//Функция для вычисления разделенных разностей прямой интерполяции
+// Function for calculating forward interpolation divided differences
 double DividedDifferencesForward(int i, int j, vector<double> x, vector<double> y)
 {
     if (i == j) {
@@ -53,7 +53,7 @@ double DividedDifferencesForward(int i, int j, vector<double> x, vector<double> 
 }
 
 
-//Функция для вычисления разделеных разностей обратной интерполяции
+// Function for calculating backward interpolation divided differences
 double DividedDifferencesBackward(int i, int j, vector<double> x, vector<double> y)
 {
     if (i == j) {
