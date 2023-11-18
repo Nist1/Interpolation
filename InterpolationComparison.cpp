@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// Функция для вычисления интерполяционного многочлена Лагранжа
+// Function for calculating Lagrange interpolation polynomial
 void LagrangeInterpolation(vector<double> x, vector<double> y, double point)
 {
     double y_k = 0.;
@@ -36,8 +36,8 @@ void LagrangeInterpolation(vector<double> x, vector<double> y, double point)
     auto endTime = chrono::steady_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(endTime - startTime);
 
-    cout << fixed << setprecision(6) << "Интерполяционный многочлен Лагранжа для x = " << point << " равен " << L_n << endl;
-    cout << "Время выполнения - " << duration.count() << " мкс" << endl << "\n";
+    cout << fixed << setprecision(6) << "Lagrange interpolation polynomial for x = " << point << " equals " << L_n << endl;
+    cout << "Duration time - " << duration.count() << " mcs" << endl << "\n";
 }
 
 
@@ -65,13 +65,13 @@ double DividedDifferencesBackward(int i, int j, vector<double> x, vector<double>
 }
 
 
-//Функция для вычисления интерполяционного многочлена Ньютона
+// Function for calculating Newton interpolation polynomial
 void NewtonInterpolation(vector<double> x, vector<double> y, double point)
 {
     double resultForward = 0.;
     double resultBackward = 0.;
     int n = x.size();
-    //Прямая интерполяция Ньютона
+    // Newton forward interpolation
     auto startTimeForward = chrono::steady_clock::now();
 
     for (int i = 0; i < n; ++i) {
@@ -84,7 +84,7 @@ void NewtonInterpolation(vector<double> x, vector<double> y, double point)
 
     auto endTimeForward = chrono::steady_clock::now();
     auto durationForward = chrono::duration_cast<chrono::microseconds>(endTimeForward - startTimeForward);
-    //Обратная интерполяция Ньютона
+    // Newton backward interpolation
     auto startTimeBackward = chrono::steady_clock::now();
 
     for (int i = n - 1; i >= 0; --i) {
@@ -98,22 +98,22 @@ void NewtonInterpolation(vector<double> x, vector<double> y, double point)
     auto endTimeBackward = chrono::steady_clock::now();
     auto durationBackward = chrono::duration_cast<chrono::microseconds>(endTimeBackward - startTimeBackward);
 
-    cout << fixed << setprecision(6) << "Интерполяционный многочлен Ньютона \n при интерполяции вперед для x = " << point << " равен " << resultForward << endl;
-    cout << "Время выполнения - " << durationForward.count() << " мкс" << endl << "\n";
+    cout << fixed << setprecision(6) << "Newton interpolation polynomial \n forward interpolation for x = " << point << " equals " << resultForward << endl;
+    cout << "Duration time - " << durationForward.count() << " mcs" << endl << "\n";
     
-    cout << fixed << setprecision(6) << "Интерполяционный многочлен Ньютона \n при интерполяции назад для x = " << point << " равен " << resultBackward << endl;
-    cout << "Время выполнения - " << durationBackward.count() << " мкс" << endl << "\n";
+    cout << fixed << setprecision(6) << "Newton interpolation polynomial \n backward interpolation for x = " << point << " equals " << resultBackward << endl;
+    cout << "Duration time - " << durationBackward.count() << " mcs" << endl << "\n";
 }
 
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    // Пример данных входных значений
+    // Example of input data
     vector<double> x = {0.64, 1.29, 2.59, 2.96, 3.93, 4.27, 4.38, 4.8, 6.33};
     vector<double> y = {2.74, 2.96, 3.68, 4.46, 5.22, 6.52, 7.43, 7.85, 8.02};
 
-    double point = 4.1;  // Значение, для которого нужно найти интерполяционный многочлен
+    double point = 4.1;  // The value to find the interpolation polynomial for
 
     LagrangeInterpolation(x, y, point);
     NewtonInterpolation(x, y, point);
